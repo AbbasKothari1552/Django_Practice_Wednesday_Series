@@ -1,4 +1,5 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, HttpResponse
+from django.template import loader
 
 
 import calendar
@@ -6,6 +7,9 @@ from calendar import HTMLCalendar
 from datetime import datetime
 
 # Create your views here.
+
+def base(request):
+    return render(request, 'base.html')
 
 
 def index(request,year, month):
@@ -36,3 +40,13 @@ def index(request,year, month):
     }
     
     return render(request, 'index.html', context = context)
+
+def testing(request):
+
+    template = loader.get_template('testing.html')
+
+    context = {
+        'fruits' : ['Apple', 'Orange', 'Banana', 'Cherry'],
+    }
+
+    return HttpResponse(template.render(context, request))

@@ -3,8 +3,9 @@ from . import views
 
 urlpatterns = [
 
-    # path('', views.index, name='home'),
+    path('', views.base, name='base'),
     path('<int:year>/<str:month>/', views.index, name='home'),
+    path('testing/', views.testing, name= 'testing'),
 
 ]
 
